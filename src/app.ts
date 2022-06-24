@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 
 import ErrorMiddleware from './middleware/error.middleware';
-import Controller from './utils/interfaces/controller.interfaces';
+import Controller from './utils/interfaces/controller.interface';
 
 class App {
     public express: Application;
