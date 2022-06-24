@@ -6,7 +6,7 @@ const createCandidate = Joi.object({
     email: Joi.string().email().required(),
     job_title: Joi.string().required(),
     phone: Joi.string().required(),
-    avatar: Joi.string().uri(),
+    avatar: Joi.string().required().uri(),
 });
 
 export default { createCandidate };
