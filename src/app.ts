@@ -1,9 +1,11 @@
+import 'dotenv/config'
 import express, { Application } from 'express';
 import cors from 'cors';
 import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
-
+import { Sequelize } from 'sequelize-typescript';
+import Candidate from './resources/candidate.repository';
 import ErrorMiddleware from './middleware/error.middleware';
 import Controller from './utils/interfaces/controller.interface';
 
@@ -18,6 +20,7 @@ class App {
         this.initializeMiddleware();
         this.initializeControllers(controllers);
         this.initializeErrorHandling();
+        this.initializeDateBase();
     }
     private initializeMiddleware(): void {
         this.express.use(helmet());
@@ -34,6 +37,23 @@ class App {
         controllers.forEach((controller: Controller) => {
             this.express.use('/v1', controller.router);
         });
+    }
+    private async initializeDateBase(): Promise<void> {
+        const sequelize = new Sequelize({
+            username:process.env.DB_USERNAME,
+            password:process.env.DB_PASSWORD,
+            database:process.env.DB_NAME,
+            host:process.env.DB_HOST,
+            dialect:"postgres",
+            models: [Candidate],
+        });
+        try {
+            await sequelize.authenticate();
+            await sequelize.sync({ alter: true });
+            console.log('database connected');
+        } catch (error: any) {
+            console.log(error.message);
+        }
     }
 
     public listen(): void {
