@@ -45,6 +45,7 @@ class App {
             database:process.env.DB_NAME,
             host:process.env.DB_HOST,
             dialect:"postgres",
+            port:Number(process.env.DB_PORT),
             models: [Candidate],
         });
         try {
