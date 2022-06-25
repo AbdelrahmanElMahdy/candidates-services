@@ -5,7 +5,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import { Sequelize } from 'sequelize-typescript';
-import Candidate from './resources/candidate.repository';
+import Candidate from './resources/candidate/candidate.repository';
 import ErrorMiddleware from './middleware/error.middleware';
 import Controller from './utils/interfaces/controller.interface';
 
