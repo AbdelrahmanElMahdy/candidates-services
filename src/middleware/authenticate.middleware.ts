@@ -30,14 +30,14 @@ async function authenticatedMiddleware(
         );
 
         if (payload instanceof jwt.JsonWebTokenError) {
-            return next(new HttpException(401, 'Unauthorised'));
+            return next(new HttpException(401, 'Unauthorized'));
         }
 
         req.candidate_id = payload.id;
 
         return next();
     } catch (error) {
-        return next(new HttpException(401, 'Unauthorised'));
+        return next(new HttpException(401, 'Unauthorized'));
     }
 }
 
