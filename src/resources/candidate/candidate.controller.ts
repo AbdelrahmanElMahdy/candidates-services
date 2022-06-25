@@ -5,6 +5,8 @@ import validationMiddleware from '../../middleware/validation.middleware';
 import validate from './candidate.validation';
 import CandidateService from './candidate.service';
 import CandidateI from './candidate.interface';
+import { createToken } from '../../utils/Token';
+import authenticatedMiddleware from '../../middleware/authenticate.middleware';
 class CandidateController implements Controller {
     public path = '/candidates';
     public router = Router();
@@ -21,7 +23,16 @@ class CandidateController implements Controller {
             this.createCandidates
         );
 
-        this.router.get(`${this.path}/:id(\\d*)?`, this.getCandidates);
+        this.router.get(
+            `${this.path}/:id(\\d*)?`,
+            authenticatedMiddleware,
+            this.getCandidates
+        );
+        this.router.delete(
+            `${this.path}/:id(\\d*)`,
+            authenticatedMiddleware,
+            this.deleteCandidate
+        );
     }
     private createCandidates = async (
         request: Request,
@@ -39,7 +50,8 @@ class CandidateController implements Controller {
                 email,
                 job_title,
             });
-            response.status(201).json(candidate);
+            let token = await createToken(candidate.id as number);
+            response.status(201).json({ candidate, token });
         } catch (error) {
             next(error);
         }
@@ -64,6 +76,23 @@ class CandidateController implements Controller {
             else candidates = await this.CandidateService.getCandidates();
 
             response.status(200).json({ candidates });
+        } catch (error) {
+            next(error);
+        }
+    };
+    private deleteCandidate = async (
+        request: Request,
+        response: Response,
+        next: NextFunction
+    ): Promise<Response | void> => {
+        try {
+            let candidate_id = request.params.id;
+            await this.CandidateService.deleteCandidate(
+                Number(candidate_id),
+                request.candidate_id
+            );
+
+            response.status(204).json({ message: 'deleted' });
         } catch (error) {
             next(error);
         }
