@@ -46,7 +46,7 @@ class CandidateController implements Controller {
     };
 
     /*
-    * this controller handle both route for getting by id or get all 
+    * this controller handle route for getting by id or get all 
     */
     private getCandidates = async (
         request: Request,
