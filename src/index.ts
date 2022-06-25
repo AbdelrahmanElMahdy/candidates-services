@@ -1,5 +1,5 @@
 import "dotenv/config";
-import CandidateController from "./resources/candidate.controller";
+import CandidateController from "./resources/candidate/candidate.controller";
 import App from './app';
 
 const app = new App(

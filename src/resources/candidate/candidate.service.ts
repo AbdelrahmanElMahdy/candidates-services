@@ -1,6 +1,6 @@
 import CandidateI from './candidate.interface';
 import CandidateRepository from './candidate.repository';
-import HttpException from '../utils/exceptions/http.exception';
+import HttpException from '../../utils/exceptions/http.exception';
 
 class CandidateService {
     private CandidateRepository = CandidateRepository;
@@ -31,9 +31,9 @@ class CandidateService {
      * get all Candidate
      */
 
-    public async getCandidates(): Promise<CandidateI[] > {
+    public async getCandidates(): Promise<CandidateI[]> {
         try {
-        var db_candidates = await this.CandidateRepository.findAll();
+            var db_candidates = await this.CandidateRepository.findAll();
         } catch (error) {
             throw new Error('Unable to retrieve  Candidate');
         }
