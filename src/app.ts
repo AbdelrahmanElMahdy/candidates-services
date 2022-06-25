@@ -8,7 +8,7 @@ import { Sequelize } from 'sequelize-typescript';
 import Candidate from './resources/candidate/candidate.repository';
 import ErrorMiddleware from './middleware/error.middleware';
 import Controller from './utils/interfaces/controller.interface';
-
+import authenticatedMiddleware from './middleware/authenticate.middleware';
 class App {
     public express: Application;
     public port: number = 5000;
@@ -29,6 +29,7 @@ class App {
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: false }));
         this.express.use(compression());
+        this.express.use(authenticatedMiddleware)
     }
     private initializeErrorHandling(): void {
         this.express.use(ErrorMiddleware);
