@@ -44,6 +44,7 @@ class App {
             dialect:"postgres",
             port:Number(process.env.DB_PORT),
             models: [Candidate],
+            logging:false
         });
         try {
             await sequelize.authenticate();
