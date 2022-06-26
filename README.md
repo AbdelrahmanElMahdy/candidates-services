@@ -32,3 +32,13 @@ let's run this project
 **now, server is running**
 
 > you can find some of apis postman documentation for this project here [postman doc](https://documenter.getpostman.com/view/13580360/UzBsH4Ye)
+
+> why separating the micro services into two different repository?
+> it's a trade off however in our case the plan is that each services will be quite large, and separating them let us treat each service independently in terms of deployment and maintaining, also if one service goes down the other services won't be affected
+
+
+> why we create some values in the database at text not string however it's size should be small ?
+> i built this project on a given existed database, so I construct the ORM to match what exist without doing migration
+
+> why I've not put all micro services inside one yaml file with different services names
+> it's a good question and again i claim it's a trade off and in real world big micro services we don't miss everything together so it all depend on how we want. 
