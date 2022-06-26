@@ -3,10 +3,8 @@
  services:
    candidate:
      image: node
-     command: sh -c "npm install typescript -g"
-     command: sh -c "npm install"
-     command: sh -c "npm run build"
-     command: sh -c "npm run start"
+     command: sh -c "npm install typescript -g && npm instal"
+     command: sh -c "npm run build && npm run start"
      ports:
        - 5000:5000
      working_dir: /candidates
