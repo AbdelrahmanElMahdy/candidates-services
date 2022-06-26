@@ -22,9 +22,11 @@ let's run this project
 
 -   docker specific
     -   `docker build -t candidate . `
+    -   `docker run candidate`
 -   normal
     -   make sure you have node.js & npm installed on your machine
     -   go inside root folder where package.json and run `npm install` to install required dependencies
+    -   `npm start dev` for development `npm start` for production
 
 **now, server is running**
 **now, server is running**
