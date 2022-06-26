@@ -13,9 +13,3 @@ jobs:
                   node-version: '14.x'
             - name: 'print starting'
               run: echo "START"
-            - name: Install typescript
-              run: npm install typescript -g
-            - name: Installing dependencies
-              run: npm install
-            - name: build the server
-              run: npm build
