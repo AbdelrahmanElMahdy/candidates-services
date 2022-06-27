@@ -1,7 +1,6 @@
 # candidate-services
 
-candidate services is a partially small micro service that provide functionality ex; adding his experience at
-candidates' previous companies
+candidate services is a partially small micro service that provide functionality ex; candidate add his/herexperience at previous companies
 <br><br>
 
 let's run this project
