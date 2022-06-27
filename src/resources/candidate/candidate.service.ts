@@ -10,16 +10,7 @@ class CandidateService {
      */
     public async create(candidate: CandidateI): Promise<CandidateI> {
         try {
-            let { first_name, last_name, email, phone, avatar, job_title } =
-                candidate;
-            const db_candidate = await this.CandidateRepository.create({
-                first_name,
-                last_name,
-                email,
-                phone,
-                avatar,
-                job_title,
-            });
+            const db_candidate = await this.CandidateRepository.create({candidate});
 
             return db_candidate;
         } catch (error) {
