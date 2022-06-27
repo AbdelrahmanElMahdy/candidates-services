@@ -2,6 +2,7 @@
 
 candidate services is a partially small micro service that provide functionality ex; adding his experience at
 candidates' previous companies
+<br><br>
 
 let's run this project
 
@@ -15,6 +16,9 @@ let's run this project
     DB_NAME: database name
     DB_PORT: database port usually 5432
     JWT_SECRET: jwt secret string
+
+<br><br>
+
 -   and now you have to option to build the server;
 
     -   docker
@@ -27,6 +31,10 @@ let's run this project
     -   make sure you have node.js & npm installed on your machine
     -   go inside root folder where package.json and run `npm install` to install required dependencies
     -   `npm run dev` for development `npm run start` for production
+> you can also run test cases using `npm run test` 
+
+
+<br><br>
 
 **now, server is running**
 **now, server is running**
